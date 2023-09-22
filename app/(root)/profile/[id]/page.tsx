@@ -1,5 +1,5 @@
 import ProfileHeader from '@/components/shared/ProfileHeader';
-import { fetchUser } from '@/lib/actions/user.action';
+import { fetchUser } from '@/lib/actions/user.actions';
 import { currentUser } from '@clerk/nextjs'
 import { Tabs, TabsList, TabsContent, TabsTrigger } from '@/components/ui/tabs';
 import { redirect } from 'next/navigation'
