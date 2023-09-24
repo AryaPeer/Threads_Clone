@@ -16,33 +16,26 @@ import {
 import { Textarea } from "@/components/ui/textarea";
 
 import { usePathname, useRouter } from "next/navigation";
+import { useOrganization } from "@clerk/nextjs";
 
 //import { updateUser } from "@/lib/actions/user.action";
 import { ThreadValidation } from "@/lib/validations/thread";
 import { createThread } from "@/lib/actions/thread.actions";
 
 interface Props {
-  user: {
-    id: string;
-    objectId: string;
-    username: string;
-    name: string;
-    bio: string;
-    image: string;
-  };
-  btnTitle: string;
+  userId: string;
 }
 
-function PostThread({ userId }: { userId: string }) {
+function PostThread({ userId }: Props) {
   const router = useRouter();
   const pathname = usePathname();
+  const { organization } = useOrganization();
 
-  const form = useForm({
+  const form = useForm<z.infer<typeof ThreadValidation>>({
     resolver: zodResolver(ThreadValidation),
     defaultValues: {
-        thread: '',
+        thread: "",
         accountId: userId,
-
     },
   });
 
@@ -50,18 +43,18 @@ function PostThread({ userId }: { userId: string }) {
     await createThread({
       text: values.thread,
       author: userId, 
-      communityId: null, 
+      communityId: organization ? organization.id : null,
       path: pathname
     });
 
     router.push("/")
-  }
+  };
 
   return (
     <Form {...form}>
     <form 
-    onSubmit={form.handleSubmit(onSubmit)} 
     className="mt-10 flex flex-col justify-start gap-10"
+    onSubmit={form.handleSubmit(onSubmit)} 
     >
         <FormField
             control={form.control}
@@ -81,6 +74,7 @@ function PostThread({ userId }: { userId: string }) {
               </FormItem>
             )}
         />
+        
         <Button type="submit" className="bg-primary-500">
           Post Thread
         </Button>
