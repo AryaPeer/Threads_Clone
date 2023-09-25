@@ -6,43 +6,45 @@ import LeftSidebar from '@/components/shared/LeftSidebar'
 import RightSidebar from '@/components/shared/RightSidebar'
 import Bottombar from '@/components/shared/Bottombar'
 import Topbar from '@/components/shared/Topbar'
+import React from 'react'
+import { dark } from "@clerk/themes"
 
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
-    title: 'Threads',
-    description: 'A Threads clone for my portfolio.',
+  title: 'Threads',
+  description: 'A Threads clone for my portfolio.',
 }
 
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
-    <ClerkProvider>
-    <html lang="en">
-      <body className={inter.className}>
-        <Topbar />
+    <ClerkProvider appearance={{ baseTheme: dark }}>
+      <html lang="en">
+        <body className={inter.className}>
+          <Topbar />
 
-        <main className='flex flex-row'>
-          <LeftSidebar />
-        
-          <section className="main-container">
+          <main className='flex flex-row'>
+            <LeftSidebar />
 
-            <div className="w-full max-w-4xl">
-              {children}
-            </div>
+            <section className="main-container">
 
-          </section>
+              <div className="w-full max-w-4xl">
+                {children}
+              </div>
 
-          <RightSidebar />
-        </main>
+            </section>
 
-        <Bottombar />
+            <RightSidebar />
+          </main>
+
+          <Bottombar />
         </body>
-    </html>
+      </html>
     </ClerkProvider>
   )
 }
