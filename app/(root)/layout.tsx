@@ -11,7 +11,7 @@ import { dark } from "@clerk/themes"
 
 const inter = Inter({ subsets: ['latin'] })
 
-export const metadata = {
+export const metadata: Metadata = {
   title: 'Threads',
   description: 'A Threads clone for my portfolio.',
 }

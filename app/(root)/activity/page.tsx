@@ -7,10 +7,10 @@ import { redirect } from 'next/navigation'
 
 async function Page() {
     const user = await currentUser();
-    if(!user) return null;
+    if (!user) return null;
 
     const userInfo = await fetchUser(user.id);
-    if(!userInfo?.onboarded) redirect('/onboarding');
+    if (!userInfo?.onboarded) redirect('/onboarding');
 
     const activity = await getActivity(userInfo._id);
 
@@ -44,8 +44,8 @@ async function Page() {
                             </Link>
                         ))}
                     </>
-                ):(
-                <p className='!text-base-regular text-light-3'>No Activity Yet</p>
+                ) : (
+                    <p className='!text-base-regular text-light-3'>No Activity Yet</p>
                 )}
             </section>
         </section>

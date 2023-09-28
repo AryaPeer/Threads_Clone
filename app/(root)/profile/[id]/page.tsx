@@ -7,12 +7,12 @@ import Image from 'next/image';
 import { profileTabs } from '@/constants';
 import ThreadsTab from '@/components/shared/ThreadsTab';
 
-async function Page({params}: {params: {id: string}}) {
+async function Page({ params }: { params: { id: string } }) {
     const user = await currentUser();
-    if(!user) return null;
+    if (!user) return null;
 
     const userInfo = await fetchUser(params.id);
-    if(!userInfo?.onboarded) redirect('/onboarding');
+    if (!userInfo?.onboarded) redirect('/onboarding');
 
     return (
         <section>
@@ -30,7 +30,7 @@ async function Page({params}: {params: {id: string}}) {
                     <TabsList className="tab">
                         {profileTabs.map((tab) => (
                             <TabsTrigger key={tab.label} value={tab.value} className="tab">
-                                <Image 
+                                <Image
                                     src={tab.icon}
                                     alt={tab.label}
                                     width={24}
@@ -49,7 +49,7 @@ async function Page({params}: {params: {id: string}}) {
                     </TabsList>
                     {profileTabs.map((tab) => (
                         <TabsContent key={`content-${tab.label}`} value={tab.value} className='w-full text-light-1'>
-                            <ThreadsTab 
+                            <ThreadsTab
                                 currentUserId={user.id}
                                 accountId={userInfo.id}
                                 accountType="User"
