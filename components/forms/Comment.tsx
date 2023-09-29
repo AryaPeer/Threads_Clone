@@ -5,15 +5,15 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@/components/ui/button";
 import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
+    Form,
+    FormControl,
+    FormField,
+    FormItem,
+    FormLabel,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { usePathname, useRouter } from "next/navigation";
-import { CommentValidation} from "@/lib/validations/thread";
+import { CommentValidation } from "@/lib/validations/thread";
 import Image from "next/image";
 import { addCommentToThread } from "@/lib/actions/thread.actions";
 
@@ -52,7 +52,7 @@ const Comment = ({ threadId, currentUserImg, currentUserId }: Props) => {
                     render={({ field }) => (
                         <FormItem className="flex w-full items-center gap-3">
                             <FormLabel>
-                                <Image 
+                                <Image
                                     src={currentUserImg}
                                     alt="Profile image"
                                     width={48}
@@ -61,8 +61,9 @@ const Comment = ({ threadId, currentUserImg, currentUserId }: Props) => {
                                 />
                             </FormLabel>
                             <FormControl className="border-none bg-transparent">
-                                <Input 
+                                <Input
                                     type="text"
+                                    {...field}
                                     placeholder="Comment..."
                                     className="no-focus text-light-1 outline-none"
                                 />
@@ -70,7 +71,8 @@ const Comment = ({ threadId, currentUserImg, currentUserId }: Props) => {
                         </FormItem>
                     )}
                 />
-                <Button type="submit" className="comment-form_btn">
+
+                <Button type='submit' className='comment-form_btn'>
                     Reply
                 </Button>
             </form>

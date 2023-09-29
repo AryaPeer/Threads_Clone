@@ -34,13 +34,16 @@ const UserCard = ({ id, name, username, imgUrl, personType }: Props) => {
                 </div>
             </div>
 
-            <Button className="user-card_btn" onClick={() => {
-                if (isCommunity) {
-                    router.push(`/communities/${id}`);
-                } else {
-                    router.push(`/profile/${id}`);
-                }
-            }}>
+            <Button
+                className='user-card_btn'
+                onClick={() => {
+                    if (isCommunity) {
+                        router.push(`/communities/${id}`);
+                    } else {
+                        router.push(`/profile/${id}`);
+                    }
+                }}
+            >
                 View
             </Button>
         </article>
