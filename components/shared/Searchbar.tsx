@@ -25,9 +25,6 @@ function Searchbar({ routeType }: Props) {
         return () => clearTimeout(delayDebounceFn);
     }, [search, routeType]);
 
-    const placeholderText =
-        routeType !== "/search" ? "Search communities" : "Search creators";
-
     return (
         <div className="searchbar">
             <Image
@@ -42,7 +39,7 @@ function Searchbar({ routeType }: Props) {
                 id="text"
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                placeholder={placeholderText}
+                placeholder= "Search"
                 className="no-focus searchbar_input"
             />
         </div>
