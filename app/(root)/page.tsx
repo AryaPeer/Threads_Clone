@@ -10,7 +10,7 @@ import { redirect } from "next/navigation";
 
 export default async function Home({ searchParams }: { searchParams: { [key: string]: string | undefined } }) {
   const user = await currentUser();
-  if (!user) return null;
+  if (!user) redirect("/onboarding");
 
   const userInfo = await fetchUser(user.id);
   if (!userInfo?.onboarded) redirect("/onboarding");
