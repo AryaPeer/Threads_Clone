@@ -5,7 +5,7 @@ import { fetchUser } from "@/lib/actions/user.actions";
 import { currentUser } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
 
-const Page = async ({ params }: { params: { id: string } }) => {
+export const Page = async ({ params }: { params: { id: string; }; }) => {
     if (!params.id) return null;
 
     const user = await currentUser();
@@ -27,16 +27,14 @@ const Page = async ({ params }: { params: { id: string } }) => {
                     author={thread.author}
                     community={thread.community}
                     createdAt={thread.createdAt}
-                    comments={thread.children}
-                />
+                    comments={thread.children} />
             </div>
 
             <div className="mt-7">
                 <Comment
                     threadId={params.id}
                     currentUserImg={user.imageUrl}
-                    currentUserId={JSON.stringify(userInfo._id)}
-                />
+                    currentUserId={JSON.stringify(userInfo._id)} />
             </div>
 
             <div className="mt-10">
@@ -51,12 +49,9 @@ const Page = async ({ params }: { params: { id: string } }) => {
                         community={childItem.community}
                         createdAt={childItem.createdAt}
                         comments={childItem.children}
-                        isComment
-                    />
+                        isComment />
                 ))}
             </div>
         </section>
-    )
+    );
 };
-
-export default Page;

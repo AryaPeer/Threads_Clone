@@ -36,9 +36,9 @@ interface Props {
 }
 
 const ThreadsTab = async ({ currentUserId, accountId, accountType }: Props) => {
-    let result: any;
+    let result: Result;
 
-    if (result === "Community") {
+    if (accountType === "Community") {
         result = await fetchCommunityPosts(accountId);
     } else {
         result = await fetchUserPosts(accountId);
