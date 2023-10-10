@@ -4,7 +4,7 @@ A feature-rich Threads clone using the MERN stack, incorporating technologies su
 
 Capable of supporting several concurrent users but a max of 1000 unique users can be signed up due to Clerk's free tier only allowing up to 1000 users.
 
-Click here to visit Threads clone -> [Threads Clone](https://threads-clone-hazel.vercel.app/)
+Click here to visit my Threads clone -> [Threads Clone](https://threads-clone-hazel.vercel.app/)
 
 ## Acknowledgements
 
